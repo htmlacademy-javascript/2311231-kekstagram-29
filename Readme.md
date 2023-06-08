@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Ия Котенок](https://up.htmlacademy.ru/javascript/29/user/2311231).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Соболев](https://htmlacademy.ru/profile/sanjoyz).
 
 ---
 
