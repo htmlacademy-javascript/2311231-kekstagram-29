@@ -1,32 +1,21 @@
 // Проверяет длину строки
 function lineLengthCheck (line, maxLineLength) {
   const lineLength = line.length;
-  return (lineLength <= maxLineLength);
+  return lineLength <= maxLineLength;
 }
 
-// Cтрока короче 20 символов
-console.log(lineLengthCheck('проверяемая строка', 20)); // true
-// Длина строки ровно 18 символов
-console.log(lineLengthCheck('проверяемая строка', 18)); // true
-// Строка длиннее 10 символов
-console.log(lineLengthCheck('проверяемая строка', 10)); // false
-
-
-console.log(' '); // Разделение для читемости консоли
-
+lineLengthCheck('проверяемая строка', 20); // true
+lineLengthCheck('проверяемая строка', 18); // true
+lineLengthCheck('проверяемая строка', 10); // false
 
 // Проверяет является ли строка палиндромом
 function isPalindrom (line) {
-  line = line.replaceAll(' ', '').toLowerCase();
-
+  const normalizeLine = line.replaceAll(' ', '').toLowerCase();
   let reverseLine = '';
-  for (let i = line.length; i > 0; i = i - 1) {
-    reverseLine += line.at(i - 1);
+  for (let i = normalizeLine.length - 1; i >= 0; i--) {
+    reverseLine += normalizeLine.at(i);
   }
-
-  console.log(`Сравниваем "${ line }" и "${ reverseLine }"`);
-  const result = (line === reverseLine);
-  console.log(result);
+  return normalizeLine === reverseLine;
 }
 
 isPalindrom('топот'); // true
@@ -34,35 +23,27 @@ isPalindrom('ДовОд'); // true
 isPalindrom('Кекс'); // false
 isPalindrom('Лёша на полке клопа нашёл '); // true
 
-
-console.log(' '); // Разделение для читемости консоли
-
-
 // Функция принимает строку, извлекает содержащиеся в ней цифры от 0 до 9
 // и возвращает их в виде целого положительного числа. Если в строке нет ни одной цифры, функция должна вернуть NaN
 
-
-function имяФункции (line) {
-  line = line.toString();
+function makeOnlyNumber (line) {
+  const stringLine = line.toString();
   let number = '';
-
-  for (let i = 0; i < line.length; i = i + 1) {
-    const check = parseInt(line.at(i), 10);
+  for (let i = 0; i < stringLine.length; i++) {
+    const check = parseInt(stringLine.at(i), 10);
     if (!Number.isNaN(check)) {
       number += check;
     }
   }
-
-  console.log(parseInt(number));
+  return parseInt(number, 10);
 }
 
-имяФункции('2023 год'); // 2023
-имяФункции('ECMAScript 2022'); // 2022
-имяФункции('1 кефир, 0.5 батона'); // 105
-имяФункции('агент 007'); // 7
-имяФункции('а я томат'); // NaN
-имяФункции(''); // NaN
-
-имяФункции(2023); // 2023
-имяФункции(-1); // 1
-имяФункции(1.5); // 15
+makeOnlyNumber('2023 год'); // 2023
+makeOnlyNumber('ECMAScript 2022'); // 2022
+makeOnlyNumber('1 кефир, 0.5 батона'); // 105
+makeOnlyNumber('агент 007'); // 7
+makeOnlyNumber('а я томат'); // NaN
+makeOnlyNumber(''); // NaN
+makeOnlyNumber(2023); // 2023
+makeOnlyNumber(-1); // 1
+makeOnlyNumber(1.5); // 15
